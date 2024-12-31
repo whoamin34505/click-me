@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6e6e6;
+        }
+
+        #no {
+            position: absolute;
+        }
+
+        .mobile-message {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Давай встречаться</h1>
+    <div class="buttons">
+        <button id="yes">Да</button>
+        <button id="no">Нет</button>
+    </div>
+
+    <script>
+        // Функция для проверки мобильного устройства
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+        }
+
+        if (isMobileDevice()) {
+            document.body.innerHTML = '<div class="mobile-message">Сайт недоступен с мобильных устройств 😒</div>';
+        } else {
+            const noButton = document.getElementById('no');
+
+            noButton.addEventListener('mouseover', () => {
+                const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            });
+
+            const yesButton = document.getElementById('yes');
+            yesButton.addEventListener('click', () => {
+                alert('Давай! ❤️');
+            });
+        }
+    </script>
+</body>
+</html>
